@@ -1,0 +1,27 @@
+@import '../../variables.scss';
+
+.header-container{
+    // min-height: 100px;
+    background-color: $black;
+    color: $skin;
+    padding: 20px;
+
+    ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin: 0 10px;
+        }
+    }
+}
+
+.header-site-icon {
+    font-size: 20px;
+}
+
+.header-cart-icon {
+    margin: 0 10px;
+}
