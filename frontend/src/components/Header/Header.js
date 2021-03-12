@@ -18,7 +18,7 @@ const Header = () => {
 
            
 
-            <div class={ isHidden ? "header-nav w-full lg:inline-flex lg:flex-grow lg:w-auto hidden" : "header-nav w-full lg:inline-flex lg:flex-grow lg:w-auto order-2" } id="navigation">
+            <div class={ isHidden ? "header-nav w-full lg:inline-flex lg:flex-grow lg:w-auto hidden" : "header-nav w-full lg:inline-flex lg:flex-grow lg:w-auto order-2 h-screen" } id="navigation">
 
                 <div class="lg:inline-flex lg:flex-row lg:ml-auto text-white flex flex-col items-start ml-auto mr-auto">
                     <a href="#" class="lg:inline-flex lg:w-auto px-3 py-2 rounded  hover:text-white  hover:bg-gray-900">
