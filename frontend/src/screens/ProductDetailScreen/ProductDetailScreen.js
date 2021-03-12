@@ -1,5 +1,6 @@
 import {getFakeProduct} from '../HomeScreen/HomeScreen'
 import {Dropdown, Button} from 'semantic-ui-react';
+import { useHistory } from "react-router-dom";
 
 
 const options = [
@@ -9,12 +10,14 @@ const options = [
   ]
 
 const ProductDetailScreen = ({match}) => {
+    let history = useHistory();
+
     const productData = getFakeProduct()
     console.log(productData)
     return (
         <div className="flex flex-col  h-auto w-full p-4">
-
-            <div className="flex flex-col md:flex-row mt-4">
+            <button onClick={history.goBack} className="w-4 h-4 md:w-6 md:h-6"><i class="fa fa-chevron-left fa-2x self-start" aria-hidden="true"></i></button>
+            <div className="flex flex-col md:flex-row mt-6">
 
                 <img src={productData.thumbnail_url} alt="" class="flex-none inset-0 w-full md:w-2/4  h-full object-left-top object-scale-down md:object-cover" />
 
