@@ -17,7 +17,7 @@ const productSeedData = Array(10).fill().map((_,i) => getFakeProduct());
 console.log(productSeedData)
 const HomeScreen = () => {
     return (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-evenly">
             {
                 productSeedData.map(
                     data => 
