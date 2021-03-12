@@ -1,6 +1,6 @@
 const ScreenLayout = ({children}) => {
     return (
-        <div className="md:mx-auto md:px-4 md:py-4 m-h-screen">
+        <div className="md:mx-auto md:px-4 md:py-4 min-h-screen">
             {children}
         </div>
     );

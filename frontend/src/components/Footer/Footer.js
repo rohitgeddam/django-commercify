@@ -2,7 +2,7 @@ import './Footer.scss'
 
 const Footer = () => {
     return  (
-        <div className="h-10 bg-gray-800 text-white flex items-center justify-center">
+        <div className="h-10 bg-gray-800 text-white flex items-center justify-center mt-auto">
             <span className="px-4">
                 @GeddamStore
             </span>
