@@ -11,14 +11,14 @@ function App() {
   return (
     <Router className="App">
       <Header/>
-      <ScreenLayout>
+      {/* <ScreenLayout> */}
         <Switch>
           <Route path="/" component={HomeScreen} exact />
           <Route path="/products/:id" component={ProductDetailScreen} />
 
           <Route component={PageNotFound} />
         </Switch>
-      </ScreenLayout>
+      {/* </ScreenLayout> */}
       <Footer/>
     </Router>
   );
