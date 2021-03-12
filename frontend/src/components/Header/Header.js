@@ -1,4 +1,5 @@
 import { React, useState } from 'react'
+import {Link} from 'react-router-dom'
 import  './Header.scss'
 
 const Header = () => {
@@ -9,10 +10,10 @@ const Header = () => {
 
     return(
         <nav class="flex items-center bg-gray-800 p-3 flex-wrap">
-            <a href="#" class="p-2  inline-flex items-center m-0">
+            <Link to={"/"} class="p-2  inline-flex items-center m-0">
                 {/* svg */}
                 <span class="text-white text-xl font-bold uppercase tracking-wide">Geddam</span>
-            </a>
+            </Link>
 
 
 

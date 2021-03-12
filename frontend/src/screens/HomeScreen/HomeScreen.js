@@ -3,13 +3,17 @@ import faker from 'faker';
 
 
 
-const getFakeProduct = () => {
+export const getFakeProduct = () => {
+    const images = Array(4).fill().map((_,i) => faker.image.fashion())
     return {
         id: faker.random.uuid(),
-        image_url: faker.image.fashion(),
+        thumbnail_url: faker.image.fashion(),
+        images: images,
         price: faker.commerce.price(),
         product_name: faker.commerce.productName(),
-        description: faker.commerce.productDescription()
+        description: faker.commerce.productDescription(),
+        stock_count: Math.floor(Math.random() * 3),
+        category: "Saree"
     }
 }
 
