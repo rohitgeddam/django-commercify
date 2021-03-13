@@ -2,7 +2,7 @@ import "./Product.scss";
 import {Link} from 'react-router-dom'
 const Product = ({productData}) => {
     return (
-        <Link to={`/products/${productData.id}`} className="product-card-container flex flex-col m-2 py-2 w-full sm:w-2/6 lg:w-1/6 bg-gray-10 h-96 shadow-md " >
+        <Link to={`/products/${productData.id}`} className="product-card-container flex flex-col m-2 py-2 w-full sm:w-2/6 lg:w-1/6 bg-gray-10 h-96 " >
             <div class="flex-none relative w-full h-5/6 object-center">
                 <img src={productData.thumbnail_url} alt="" class="absolute inset-0 w-full h-full object-center object-fill md:object-scale-down" />
             </div>
