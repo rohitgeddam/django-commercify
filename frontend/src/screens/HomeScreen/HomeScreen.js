@@ -38,7 +38,7 @@ const HomeScreen = () => {
     ,[])
 
     return (
-        <div className="flex flex-wrap justify-evenly min-h-full">
+        <div className="flex flex-wrap justify-start min-h-full ">
             {
                 products.map(
                     data => 
