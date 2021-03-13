@@ -24,15 +24,15 @@ const ProductDetailScreen = ({match}) => {
             setProduct(product);
         }
         fetchProduct();
-    },[])
+    },[match.params.id])
     return (
-        <div className="flex flex-col  h-auto w-full p-4">
+        <div className="flex flex-col  h-auto w-full p-4 ">
             <button onClick={history.goBack} className="w-4 h-4 md:w-6 md:h-6"><i class="fa fa-chevron-left fa-2x self-start" aria-hidden="true"></i></button>
-            <div className="flex flex-col md:flex-row mt-6">
+            <div className="flex flex-col md:flex-row mt-6 md:justify-around">
 
-                <img src={product.thumbnail} alt="" class="flex-none inset-0 w-full md:w-2/4  h-full object-left-top object-scale-down md:object-cover" />
+                <img src={product.thumbnail} alt="" class="flex-none inset-0 w-full md:w-1/4 self-start h-full object-left-top object-scale-down" />
 
-                <div className="flex-auto mt-4 px-4 w-full md:w-1/6 lg:w-1/6">
+                <div className="flex-2 mt-4 px-4 w-full md:w-1/2 lg:w-1/4 md:shadow-md">
 
                     <h1 class="flex-auto text-xl font-semibold">
                         {product.name}
@@ -63,19 +63,21 @@ const ProductDetailScreen = ({match}) => {
 
             </div>
 
-            <div className="w-full mt-8 flex flex-col">
-                    <p className="font-semibold text-xl text-gray-500">More Images</p>
- 
-                    { 
-                    product.more_images && 
+            <div className="w-full mt-8 md:mt-16 flex flex-col">
+                    <p className="font-semibold text-xl text-gray-500 self-center">More Images</p>
+                    <div className="flex flex-row flex-wrap justify-center">
+                        { 
+                        product.more_images && 
 
-                    product.more_images.map((image) => {
+                        product.more_images.map((image) => {
 
-                        return (
-                            <img src={image.image} className="w-full md:w-2/4 my-4 rounded-md object-scale-down md:object-cover"/>
-                        )
-                    })
-                    }
+                            return (
+                                <img src={image.image} className="w-full md:w-1/4 my-4 md:mx-4 rounded-md object-scale-down"/>
+                            )
+                        })
+                        }
+                    </div>
+                    
                 </div>
 
         </div>
