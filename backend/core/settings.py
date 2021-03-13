@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
 
     'rest_framework',
+    'corsheaders',
+
 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -130,3 +133,8 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = 'static/images'
+
+# CORS_ALLOWED_ORIGINS = [
+
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
