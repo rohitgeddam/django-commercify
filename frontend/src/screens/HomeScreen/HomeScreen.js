@@ -39,7 +39,7 @@ const HomeScreen = () => {
     if(loading) {
         return (
             <div className="my-5 mx-5">
-                <Card.Group itemsPerRow={3}>
+                <Card.Group itemsPerRow={3} className="flex flex-col items-center md:flex-row md:items-start">
                     <Card>
                     <Card.Content>
                         <Placeholder>
