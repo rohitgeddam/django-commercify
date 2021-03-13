@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Product from '../../components/Product/Product'
 import { listProducts } from '../../actions/productActions'
-import { productListReducer } from '../../reducers/productReducers';
-
-import { Card, Placeholder, Message } from 'semantic-ui-react'
+// import { productListReducer } from '../../reducers/productReducers';
+import PlaceHolder from '../../components/commons/PlaceHolder/PlaceHolder'
+import ErrorMessage from '../../components/commons/ErrorMessage/ErrorMessage'
 
 // import faker from 'faker';
 
@@ -39,29 +39,7 @@ const HomeScreen = () => {
     if(loading) {
         return (
             <div className="my-5 mx-5">
-                <Card.Group itemsPerRow={3} className="flex flex-col items-center md:flex-row md:items-start">
-                    <Card>
-                    <Card.Content>
-                        <Placeholder>
-                        <Placeholder.Image square />
-                        </Placeholder>
-                    </Card.Content>
-                    </Card>
-                    <Card>
-                    <Card.Content>
-                        <Placeholder>
-                        <Placeholder.Image square />
-                        </Placeholder>
-                    </Card.Content>
-                    </Card>
-                    <Card>
-                    <Card.Content>
-                        <Placeholder>
-                        <Placeholder.Image square />
-                        </Placeholder>
-                    </Card.Content>
-                    </Card>
-                </Card.Group>
+                <PlaceHolder/>
             </div>
            
         )
@@ -70,10 +48,7 @@ const HomeScreen = () => {
     if(error){
         return (
             <div className="m-5">
-                <Message negative>
-                    <Message.Header>Something went wrong</Message.Header>
-                    <p>{error}</p>
-                </Message>
+                <ErrorMessage text={error}/>
             </div>
         )
     }
