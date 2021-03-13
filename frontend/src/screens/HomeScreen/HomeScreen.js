@@ -4,6 +4,9 @@ import axios from 'axios';
 import Product from '../../components/Product/Product'
 import { listProducts } from '../../actions/productActions'
 import { productListReducer } from '../../reducers/productReducers';
+
+import { Card, Placeholder, Message } from 'semantic-ui-react'
+
 // import faker from 'faker';
 
 
@@ -34,13 +37,47 @@ const HomeScreen = () => {
     },[dispatch])
 
     if(loading) {
-        return <h1>Loading...</h1>
+        return (
+            <div className="my-5 mx-5">
+                <Card.Group itemsPerRow={3}>
+                    <Card>
+                    <Card.Content>
+                        <Placeholder>
+                        <Placeholder.Image square />
+                        </Placeholder>
+                    </Card.Content>
+                    </Card>
+                    <Card>
+                    <Card.Content>
+                        <Placeholder>
+                        <Placeholder.Image square />
+                        </Placeholder>
+                    </Card.Content>
+                    </Card>
+                    <Card>
+                    <Card.Content>
+                        <Placeholder>
+                        <Placeholder.Image square />
+                        </Placeholder>
+                    </Card.Content>
+                    </Card>
+                </Card.Group>
+            </div>
+           
+        )
     }
 
     if(error){
-        return <h1>{error}</h1>
+        return (
+            <div className="m-5">
+                <Message negative>
+                    <Message.Header>Something went wrong</Message.Header>
+                    <p>{error}</p>
+                </Message>
+            </div>
+        )
     }
-    
+
     return (
         <div className="flex flex-wrap justify-start min-h-full ">
             { products && 
