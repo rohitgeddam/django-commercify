@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Product from '../../components/Product/Product'
+import { listProducts } from '../../actions/productActions'
+import { productListReducer } from '../../reducers/productReducers';
 // import faker from 'faker';
 
 
@@ -22,24 +25,25 @@ import Product from '../../components/Product/Product'
 // const productSeedData = Array(10).fill().map((_,i) => getFakeProduct());
 
 const HomeScreen = () => {
-
-    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch()
+    const productList = useSelector(state => state.productList)
+    const { error, loading, products } = productList;
 
     useEffect(()=>{
+        dispatch(listProducts())
+    },[dispatch])
 
-        const fetchProducts = async () => {
-            const response = await axios.get('api-v1/products');
-            const products = response.data;
-            setProducts(products)
-        }
-
-        fetchProducts();
+    if(loading) {
+        return <h1>Loading...</h1>
     }
-    ,[])
 
+    if(error){
+        return <h1>{error}</h1>
+    }
+    
     return (
         <div className="flex flex-wrap justify-start min-h-full ">
-            {
+            { products && 
                 products.map(
                     data => 
                         <Product productData={data} />
