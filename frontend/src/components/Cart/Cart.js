@@ -1,14 +1,21 @@
 import CartItem from '../CartItem/CartItem';
 import {useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {removeItemFromCart} from '../../actions/cartActions';
 
 const Cart = ({handleCartVisibility}) => {
+    const dispatch = useDispatch();
     const cart = useSelector(state => state.cart)
     const cartItems = cart.cartItems;
 
-    useEffect(() => {
+    const removeItemHandler = (id) => {
+        console.log("I was called", id)
+        dispatch(removeItemFromCart(id));
+    }
 
-    }, [cart])
+    useEffect(() => {
+        console.log("I RAN NOW")
+    }, [cartItems, dispatch])
 
     return (
         <div className="absolute  right-0  bottom-0 min-h-full bg-gray-100 w-full z-50 md:w-5/12 p-10">
@@ -27,7 +34,7 @@ const Cart = ({handleCartVisibility}) => {
                 {/* CartItem List */}
                 {
                     cartItems.map((item) => (
-                        <CartItem item={item}/>
+                        <CartItem item={item} removeItemHandler={removeItemHandler}/>
                     ))
                 }
             </div>

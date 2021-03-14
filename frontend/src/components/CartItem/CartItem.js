@@ -1,4 +1,4 @@
-const CartItem = ({item}) => {
+const CartItem = ({item, removeItemHandler}) => {
     return (
         <div className="flex w-full bg-gray-50 rounded-md h-1/3 my-4 py-4 px-2 flex-wrap">
             <div classname="w-1/3">
@@ -13,6 +13,10 @@ const CartItem = ({item}) => {
                 <div className="font-semibold text-gray-500">
                     {item.price}
                 </div>
+            </div>
+
+            <div>
+                <button onClick={() => removeItemHandler(item.id)}>Remove</button>
             </div>
         </div>
     );
