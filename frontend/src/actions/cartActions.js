@@ -19,5 +19,17 @@ export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
         type: ADD_TO_CART,
         payload: product
     })
-    localStorage.setItem('cartItems', JSON.stringify([...getState().cart.cartItems, product]))
+    
+    let cartItemsLocalStorage = JSON.parse(localStorage.getItem('cartItems')) || []
+    const itemExistInLocalStorage = cartItemsLocalStorage.find( x => x.id === product.id)
+    console.log("IEM ", itemExistInLocalStorage)
+    if(itemExistInLocalStorage){
+        cartItemsLocalStorage = cartItemsLocalStorage.filter(item => {
+            return item.id !== product.id
+        })
+        localStorage.setItem('cartItems', JSON.stringify([...cartItemsLocalStorage, product]))
+    } else {
+
+        localStorage.setItem('cartItems', JSON.stringify([...getState().cart.cartItems, product]))
+    }
 }
