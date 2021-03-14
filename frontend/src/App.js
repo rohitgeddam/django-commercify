@@ -20,7 +20,6 @@ function App() {
 
   const handleCartVisibility = () => {
     setShowCart((prev)=>!prev);
-    console.log(showCart)
 }
 
   return (

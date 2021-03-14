@@ -1,10 +1,14 @@
 import { React, useState } from 'react'
+import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
+import { Icon, Label, Menu } from 'semantic-ui-react'
+
 import  './Header.scss'
 
 const Header = ({handleCartVisibility}) => {
     const [isHidden, setIsHidden] = useState(true);
-
+    const cart = useSelector(state => state.cart)
+    const cartItems = cart.cartItems;
   
 
     const toggleMenu = () => {
@@ -37,10 +41,11 @@ const Header = ({handleCartVisibility}) => {
             </div>
 
             <div class="lg:inline-flex lg:flex-row lg:ml-auto text-white flex  items-start self-end flex-row">
+                
                     <button 
                         onClick={handleCartVisibility}
                         class="lg:inline-flex lg:w-auto px-3 py-2 rounded  hover:text-white  hover:bg-gray-900">
-                        <span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                        <span><i class="fa fa-shopping-cart" aria-hidden="true"></i><Label color='red' as='a'>{cartItems.length}</Label></span>
                     </button>
                     <a href="#" class="lg:inline-flex lg:w-auto px-3 py-2 rounded  hover:text-white  hover:bg-gray-900">
                         <span><i class="fa fa-user" aria-hidden="true"></i></span>
