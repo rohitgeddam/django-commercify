@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 
 import './App.css';
 import Header from './components/Header/Header';
@@ -12,6 +12,11 @@ import Cart from './components/Cart/Cart';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
+
+  useEffect(()=> {
+    const body = document.querySelector('body');
+    body.style.overflow = showCart ? 'hidden' : 'auto';
+  },[showCart])
 
   const handleCartVisibility = () => {
     setShowCart((prev)=>!prev);
