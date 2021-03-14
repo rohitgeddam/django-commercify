@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 import {getProductDetail} from '../../actions/productActions'
+import {addItemToCart} from '../../actions/cartActions'
 import './ProductDetailScreen.scss'
 import ErrorMessage from '../../components/commons/ErrorMessage/ErrorMessage'
 import PlaceHolder from '../../components/commons/PlaceHolder/PlaceHolder'
@@ -25,7 +26,10 @@ const ProductDetailScreen = ({match}) => {
     const { loading, error, product } = productDetails
     const [quantity, setQuantity] = useState(1)
     // const [product, setProduct] = useState({})
-
+    const handleAddToCart = () => {
+        console.log("adding to cart", product.id, quantity)
+        dispatch(addItemToCart(product.id, quantity))
+    }
     useEffect(() => {
         dispatch(getProductDetail(match.params.id))
     },[dispatch, match])
@@ -103,7 +107,7 @@ const ProductDetailScreen = ({match}) => {
                 
 
                     <div className="w-full mt-4">
-                        <Button secondary className="w-full" circular>
+                        <Button secondary className="w-full" circular onClick={handleAddToCart}>
                             ADD TO CART
                         </Button>
                     </div>
