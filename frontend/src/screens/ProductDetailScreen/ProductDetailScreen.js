@@ -1,10 +1,14 @@
 // import {getFakeProduct} from '../HomeScreen/HomeScreen'
 import {useEffect, useState} from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import {Dropdown, Button} from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
+import {getProductDetail} from '../../actions/productActions'
 import './ProductDetailScreen.scss'
+import ErrorMessage from '../../components/commons/ErrorMessage/ErrorMessage'
+import PlaceHolder from '../../components/commons/PlaceHolder/PlaceHolder'
 
 // const options = [
 //     { key: 1, text: 'Choice 1', value: 1 },
@@ -16,8 +20,15 @@ import './ProductDetailScreen.scss'
 
 const ProductDetailScreen = ({match}) => {
     let history = useHistory();
+    const dispatch = useDispatch();
+    const productDetails = useSelector( state => state.productDetails)
+    const { loading, error, product } = productDetails
     const [quantity, setQuantity] = useState(1)
-    const [product, setProduct] = useState({})
+    // const [product, setProduct] = useState({})
+
+    useEffect(() => {
+        dispatch(getProductDetail(match.params.id))
+    },[dispatch])
     // const product = getFakeProduct()
     // console.log(product)
     const incrementQuantity = () => {
@@ -33,15 +44,23 @@ const ProductDetailScreen = ({match}) => {
         });
     }
 
-    useEffect(()=>{
-        const fetchProduct = async () => {
-            const response = await axios.get(`/api-v1/products/${match.params.id}`);
-            const product = response.data;
+    if(loading) {
+        return (
+            <div className="my-5 mx-5">
+                <PlaceHolder/>
+            </div>
+        )
+    }
 
-            setProduct(product);
-        }
-        fetchProduct();
-    },[match.params.id])
+    if(error){
+        return (
+            <div className="my-5 mx-5">
+                <ErrorMessage text={error} />
+            </div>
+        )
+    }
+
+    
     return (
         <div className="flex flex-col  h-auto w-full p-4 ">
             <button onClick={history.goBack} className="w-4 h-4 md:w-6 md:h-6"><i class="fa fa-chevron-left fa-2x self-start" aria-hidden="true"></i></button>
