@@ -2,8 +2,11 @@ import { React, useState } from 'react'
 import {Link} from 'react-router-dom'
 import  './Header.scss'
 
-const Header = () => {
+const Header = ({handleCartVisibility}) => {
     const [isHidden, setIsHidden] = useState(true);
+
+  
+
     const toggleMenu = () => {
         setIsHidden(!isHidden);
     }
@@ -16,20 +19,17 @@ const Header = () => {
             </Link>
 
 
-
-           
-
             <div class={ isHidden ? "header-nav w-full lg:inline-flex lg:flex-grow lg:w-auto hidden" : "header-nav w-full lg:inline-flex lg:flex-grow lg:w-auto order-2 h-screen" } id="navigation">
 
                 <div class="lg:inline-flex lg:flex-row lg:ml-auto text-white flex flex-col items-start ml-auto mr-auto">
                     <a href="#" class="lg:inline-flex lg:w-auto px-3 py-2 rounded  hover:text-white  hover:bg-gray-900">
-                        <span>Home</span>
+                        <span>Products</span>
+                    </a>
+                    <a href="#" class="lg:inline-flex lg:w-auto px-3 py-2 rounded  hover:text-white  hover:bg-gray-900">
+                        <span>Offers</span>
                     </a>
                     <a href="#" class="lg:inline-flex lg:w-auto px-3 py-2 rounded hover:text-white hover:bg-gray-900">
                         <span>About</span>
-                    </a>
-                    <a href="#" class="lg:inline-flex lg:w-auto px-3 py-2 rounded hover:text-white hover:bg-gray-900">
-                        <span>Services</span>
                     </a>
                 </div>
 
@@ -37,9 +37,11 @@ const Header = () => {
             </div>
 
             <div class="lg:inline-flex lg:flex-row lg:ml-auto text-white flex  items-start self-end flex-row">
-                    <a href="#" class="lg:inline-flex lg:w-auto px-3 py-2 rounded  hover:text-white  hover:bg-gray-900">
+                    <button 
+                        onClick={handleCartVisibility}
+                        class="lg:inline-flex lg:w-auto px-3 py-2 rounded  hover:text-white  hover:bg-gray-900">
                         <span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                    </a>
+                    </button>
                     <a href="#" class="lg:inline-flex lg:w-auto px-3 py-2 rounded  hover:text-white  hover:bg-gray-900">
                         <span><i class="fa fa-user" aria-hidden="true"></i></span>
                     </a>

@@ -28,7 +28,7 @@ const ProductDetailScreen = ({match}) => {
 
     useEffect(() => {
         dispatch(getProductDetail(match.params.id))
-    },[dispatch])
+    },[dispatch, match])
     // const product = getFakeProduct()
     // console.log(product)
     const incrementQuantity = () => {
