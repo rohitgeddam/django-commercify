@@ -34,12 +34,13 @@ export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
     }
 }
 
-export const removeItemFromCart = (id) => async (dispatch) => {
+export const removeItemFromCart = (id) => async (dispatch, getState) => {
     dispatch({
         type: REMOVE_FROM_CART,
         payload: id
     })
-    let cartItemsLocalStorage = JSON.parse(localStorage.getItem('cartItems')) || []
-    const newList = cartItemsLocalStorage.filter( item => item.id !== id);
-    localStorage.setItem('cartItems', JSON.stringify([...newList]))
+    // let cartItemsLocalStorage = JSON.parse(localStorage.getItem('cartItems')) || []
+    // const newList = cartItemsLocalStorage.filter( item => item.id !== id);
+    // localStorage.setItem('cartItems', JSON.stringify([...newList]))
+    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 }

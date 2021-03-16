@@ -2,18 +2,26 @@ import CartItem from '../CartItem/CartItem';
 import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {removeItemFromCart} from '../../actions/cartActions';
+import { useHistory } from 'react-router-dom';
 
 
 
 const Cart = ({handleCartVisibility}) => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart)
     const cartItems = cart.cartItems;
 
+    const handleCheckout = () => {
+        history.push('/login?redirect=shipping')
+    }
+
     const getTotal = () => {
         let sum = 0;
-        cartItems.forEach((i) => { sum = sum + (i.price * i.quantity) })
-        console.log(sum)
+        // cartItems.forEach((i) => { sum = sum + (i.price * i.quantity) })
+        // console.log(sum)
+        sum = cartItems.reduce((sum, item) => sum + (item.price * item.quantity),0)
+        console.log("SUM",sum)
         return sum;
     }
     const removeItemHandler = (id) => {
@@ -68,7 +76,7 @@ const Cart = ({handleCartVisibility}) => {
                     Cart Total: {getTotal()}
                 </div>
                 <div className="w-full my-4">
-                    <button className="w-full text-white text-lg text-bold bg-blue-500 p-2 rounded-full">
+                    <button className="w-full text-white text-lg text-bold bg-blue-500 p-2 rounded-full" onClick = {handleCheckout} disabled={cartItems.length <= 0}>
                         CHECKOUT
                     </button>
                 </div>
