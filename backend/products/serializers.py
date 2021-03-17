@@ -10,7 +10,7 @@ class CategorySerializer(ModelSerializer):
 class ProductImageSerializer(ModelSerializer):
     class Meta:
         model = models.ProductImage
-        fields = ["image"]
+        fields = "__all__"
 
 class ProductSerializer(ModelSerializer):
     category = CategorySerializer(many=True)
@@ -18,7 +18,7 @@ class ProductSerializer(ModelSerializer):
 
     class Meta:
         model = models.Product
-        fields = ['name', 'description', 'thumbnail', 'price',
+        fields = ['id','name', 'description', 'thumbnail', 'price',
                     'created_on', 'updated_on', 'stock_count',
                     'category', 'user',]
         # fields = "__all__"

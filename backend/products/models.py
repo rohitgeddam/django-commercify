@@ -31,7 +31,7 @@ class Category(models.Model):
     
 class ProductImage(models.Model):
     image = models.ImageField()
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, default=1)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, default=1, related_name="product_images")
 
     def __str__(self):
-        return f"{self.image}"
+        return f"{self.product.name}--{self.image}"

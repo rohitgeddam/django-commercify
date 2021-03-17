@@ -3,7 +3,7 @@ from django.urls.resolvers import URLPattern
 from products import views
 
 urlpatterns = [
-    path('products/', views.get_all_products, name="all_products"),
-    path('products/<str:pk>', views.get_product, name="get_product"),
+    path('', views.get_all_products, name="all_products"),
+    path('<str:pk>', views.get_product, name="get_product"),
 
 ]
